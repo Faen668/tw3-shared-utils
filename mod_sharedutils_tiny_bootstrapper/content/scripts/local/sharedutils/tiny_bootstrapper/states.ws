@@ -51,7 +51,6 @@ state Empty in SU_TinyBootstrapperManager
 	
 	entry function Empty_main() 
 	{
-		parent.removeUnusedMods();
 		parent.startMods();
 	}
 }
