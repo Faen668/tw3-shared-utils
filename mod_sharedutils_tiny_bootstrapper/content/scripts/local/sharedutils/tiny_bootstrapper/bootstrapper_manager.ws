@@ -18,12 +18,13 @@ statemachine class SU_TinyBootstrapperManager extends SU_StorageItem
 		this.states_to_process = theGame.GetDefinitionsManager()
 			.GetItemsWithTag('SU_TinyBootstrapperManager');
 
+		this.mods_to_bootstrap.Clear();
 		this.migrateModsToNonPeristentArray();
 		this.GotoState('Initialising');
 		return this;
 	}
 
-	private var migrateModsToNonPeristentArray() {
+	private function migrateModsToNonPeristentArray() {
 		var mod: SU_BaseBootstrappedMod;
 		var i: int;
 
@@ -69,6 +70,8 @@ statemachine class SU_TinyBootstrapperManager extends SU_StorageItem
 				mod.stop();
 			}
 		}
+
+		this.mods_to_bootstrap.Clear();
 	}
 	
 	public function hasModWithTag(tag: name): bool
