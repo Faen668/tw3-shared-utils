@@ -112,11 +112,7 @@ function SU_setDialogChoicesAndResponseListener(choices: array<SSceneChoice>, re
   var null: SSceneChoice;
 
   dialogueModule = SU_setDialogChoices(choices);
-  hud = (CR4ScriptedHud)theGame.GetHud();
-
-  theInput.SetContext( 'Scene' );
-  theGame.SetIsDialogOrCutscenePlaying(true);
-  hud.OnCutsceneStarted();
+  dialogueModule.responseListener = response_listener;
 
   return true;
 }
